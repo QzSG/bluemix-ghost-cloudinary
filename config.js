@@ -8,8 +8,10 @@ var path = require('path'),
 
 // my app config
 var myapp = {
-    cloudinary: {},
-    mailgun: {},
+    //Uncomment the below if you have cloudinary account at https://cloudinary.com/ created and added credentials to node env
+    //cloudinary: {},
+    //Uncomment the below if you have mailgun account at https://www.mailgun.com/ created and added credentials to node env
+    //mailgun: {},
     mysql: {}
 };
 myapp.port = (process.env.VCAP_APP_PORT || '2368');
@@ -32,15 +34,18 @@ if (process.env.VCAP_SERVICES != undefined) {
     }
 }
 
-if (process.env.CLOUDINARY != undefined)
+//Uncomment the below if you have cloudinary account at https://cloudinary.com/ created and added credentials to node env
+/*if (process.env.CLOUDINARY != undefined)
     myapp.cloudinary = JSON.parse(process.env.CLOUDINARY);
 
-console.log(myapp.cloudinary);
+//console.log(myapp.cloudinary);
+*/
 
-if (process.env.MAILGUN != undefined)
+//Uncomment the below if you have mailgun account at https://www.mailgun.com/ created and added credentials to node env
+/*if (process.env.MAILGUN != undefined)
     myapp.mailgun = JSON.parse(process.env.MAILGUN);
+*/
 
-console.log(myapp.cloudinary);
 
 // end: my app config
 
@@ -51,7 +56,8 @@ config = {
     // Configure your URL and mail settings here
     production: {
         url: myapp.protocol + myapp.route,
-        mail: {
+        // Uncomment mail block once you have gotten mailgun credentials and added env variables
+        /*mail: {
             transport: 'SMTP',
             options: {
                 service: 'Mailgun',
@@ -61,6 +67,7 @@ config = {
                 }
             }
         },
+        */
         database: {
             client: 'mysql',
             connection: {
@@ -76,6 +83,9 @@ config = {
                 max: 2
             }
         },
+        //Uncomment the below if you have cloudinary account at https://cloudinary.com/ created and added credentials to node env
+        // Note that local storage will not persist
+        /*
         storage: {
             active: 'ghost-cloudinary-store',
             'ghost-cloudinary-store': {
@@ -85,6 +95,7 @@ config = {
                 secure: true
             }
         },
+        */
         server: {
             // Host to be passed to node's `net.Server#listen()`
             host: myapp.host,
