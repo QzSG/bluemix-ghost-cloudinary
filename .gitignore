@@ -1,0 +1,9 @@
+node_modules
+obj
+bin
+.idea
+.vs
+*.njsproj
+*.sln
+.ntvs_analysis.dat
+typings

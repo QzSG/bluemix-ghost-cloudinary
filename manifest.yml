@@ -1,0 +1,13 @@
+﻿---
+applications:
+- memory: 512M
+  instances: 1
+  path: .
+  command: node index --production
+  env:
+    NODE_ENV: production
+  services:
+    - ghost-mysql-db
+  name: blog
+  host: blog
+  domain: qz.sg
