@@ -1,4 +1,8 @@
 ﻿---
+declared-services:
+  ghost-mysql-db:
+    label: cleardb
+    plan: spark 
 applications:
 - memory: 512M
   instances: 1
@@ -8,6 +12,9 @@ applications:
     NODE_ENV: production
   services:
     - ghost-mysql-db
+  # Name - What you want your app to be called
+  # Host - Simply replace with your BlueMix organization
+  # If you are using the mybluemix subdomain given by Bluemix, remove the domain line, you can remove the host line too
   name: blog
-  host: blog
-  domain: qz.sg
+  host: bluemix-org-name
+  domain: example.com
