@@ -12,9 +12,11 @@ applications:
     NODE_ENV: production
   services:
     - ghost-mysql-db
+  
+  # Uncomment the name, host, or domain lines if you are not using the Bluemix Deploy button and use the appropriate ones, only name is needed
   # Name - What you want your app to be called
   # Host - Simply replace with your BlueMix organization
   # If you are using the mybluemix subdomain given by Bluemix, remove the domain line, you can remove the host line too
-  name: blog
-  host: bluemix-org-name
-  domain: example.com
+  #name: blog
+  #host: bluemix-org-name
+  #domain: example.com
