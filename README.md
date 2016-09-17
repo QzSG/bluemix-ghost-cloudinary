@@ -1,7 +1,8 @@
 [![GitHub release](https://img.shields.io/github/release/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/releases)
-[![Ghost Version](https://img.shields.io/badge/ghost-0.11.0-brightgreen.svg?style=flat-square)](https://github.com/TryGhost/Ghost)
-[![Node Version](https://img.shields.io/badge/node-^4.2.4-brightgreen.svg?style=flat-square)](https://nodejs.org/en/)
-[![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
+[![Ghost Version](https://img.shields.io/badge/ghost-0.11.0-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
+[![Node Version](https://img.shields.io/badge/node-^4.2.4-brightgreen.svg?maxAge=2592000&style=flat-square)](https://nodejs.org/en/)
+[![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
+[![David dependencies checker](https://img.shields.io/david/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://david-dm.org/QzSG/bluemix-ghost-cloudinary)
 [![MIT license](https://img.shields.io/github/license/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/blob/master/LICENSE)
 
 <img src="https://cloud.githubusercontent.com/assets/120485/6622822/c4c639fe-c8e7-11e4-9e64-5bec06c8b4c3.png" alt="Ghost" />
