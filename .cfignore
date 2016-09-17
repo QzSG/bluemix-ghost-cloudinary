@@ -6,4 +6,3 @@ bin
 *.njsproj
 *.sln
 .ntvs_analysis.dat
-core/test
