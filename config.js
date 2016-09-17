@@ -26,10 +26,19 @@ if (process.env.VCAP_APPLICATION != undefined) {
 if (process.env.VCAP_SERVICES != undefined) {
     var vcap_services = JSON.parse(process.env.VCAP_SERVICES);
     
+    /* //uncomment if using experimental mysql service
     if (vcap_services.mysql != undefined) {
         myapp.mysql = vcap_services.mysql[0].credentials;
     } else {
         console.error('Cannot find mysql service');
+        process.exit(1);
+    }*/
+    
+    // Default uses ClearDB
+    if (vcap_services.cleardb != undefined) {
+        myapp.mysql = vcap_services.cleardb[0].credentials;
+    } else {
+        console.error('Cannot find cleardb service');
         process.exit(1);
     }
 }
