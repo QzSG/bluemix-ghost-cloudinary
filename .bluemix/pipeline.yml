@@ -12,7 +12,7 @@ stages:
     build_type: npm
     script: |-
       #!/bin/bash
-	  export PATH=/opt/IBM/node-v4.2/bin:$PATH
+      export PATH=/opt/IBM/node-v4.2/bin:$PATH
       npm install
 - name: Deploy
   inputs:
