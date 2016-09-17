@@ -7,7 +7,7 @@ applications:
 - memory: 512M
   instances: 1
   path: .
-  buildpack: sdk-for-nodejs_v2_8-20151209-1403
+  buildpack: sdk-for-nodejs_v3_6-20160715-0749
   command: node index --production
   env:
     NODE_ENV: production
