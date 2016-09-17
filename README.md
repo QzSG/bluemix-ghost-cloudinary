@@ -54,6 +54,15 @@ Install Node.js. (See [Supported Node.js versions](http://support.ghost.org/supp
 
 <a href="https://bluemix.net/deploy?repository=https://github.com/QuartzSG/bluemix-ghost-cloudinary"><img src="https://bluemix.net/deploy/button.svg" alt="Deploy to Bluemix" width="300px"/></a>
 
+### Storage: Using [Cloudinary](http://cloudinary.com/) to store files
+
+1. After you have created an account at Cloudinary
+2. Uncomment the Cloudinary configuration inside config.js
+3. Create an environment variable containing your cloudinary credentials which can be found at [Cloudinary Console](https://cloudinary.com/console), in the format of: `cf set-env ghost CLOUDINARY '{"cloud_name":"...", "api_key":"...", "api_secret":"..."}'`
+4. Push update and restart ghost `cf push`
+
+
+
 # Helpful references
 - [TryGhost/Ghost](https://github.com/TryGhost/Ghost)
 - [sethbrasile/ghost-cloudinary-store](https://github.com/sethbrasile/ghost-cloudinary-store)
