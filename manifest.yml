@@ -1,6 +1,6 @@
 ﻿---
 declared-services:
-  ghost-mysql-db:
+  ghost-test-mysql-db:
     label: cleardb
     plan: spark 
 applications:
@@ -11,7 +11,7 @@ applications:
   env:
     NODE_ENV: production
   services:
-    - ghost-mysql-db
+    - ghost-test-mysql-db
   
   # Uncomment the name, host, or domain lines if you are not using the Bluemix Deploy button and use the appropriate ones, only name is needed
   # Name - What you want your app to be called
