@@ -2,7 +2,7 @@
 [![Ghost Version](https://img.shields.io/badge/ghost-0.11.0-brightgreen.svg?style=flat-square)](https://github.com/TryGhost/Ghost)
 [![Node Version](https://img.shields.io/badge/node-^4.2.4-brightgreen.svg?style=flat-square)](https://nodejs.org/en/)
 [![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
-[![license](https://img.shields.io/github/license/QuartzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000?style=flat-square)]()
+[![MIT license](https://img.shields.io/github/license/QuartzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://github.com/QuartzSG/bluemix-ghost-cloudinary/blob/master/LICENSE)
 
 <img src="https://cloud.githubusercontent.com/assets/120485/6622822/c4c639fe-c8e7-11e4-9e64-5bec06c8b4c3.png" alt="Ghost" />
 
