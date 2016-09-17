@@ -1,3 +1,4 @@
+[![GitHub version](https://badge.fury.io/gh/QuartzSG%2Fbluemix-ghost-cloudinary.svg)](https://badge.fury.io/gh/QuartzSG%2Fbluemix-ghost-cloudinary)
 [![Ghost Version](https://img.shields.io/badge/ghost-0.11.0-brightgreen.svg?style=flat-square)](https://github.com/TryGhost/Ghost)
 [![Node Version](https://img.shields.io/badge/node-^4.2.4-brightgreen.svg?style=flat-square)](https://nodejs.org/en/)
 [![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
