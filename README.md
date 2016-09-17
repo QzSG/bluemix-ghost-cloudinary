@@ -58,7 +58,7 @@ Install Node.js. (See [Supported Node.js versions](http://support.ghost.org/supp
 
 ![Ghost + BlueMix](http://i.imgur.com/vNrQ3PD.jpg?1)
 
-<a href="https://bluemix.net/deploy?repository=https://github.com/QuartzSG/bluemix-ghost-cloudinary"><img src="https://bluemix.net/deploy/button.svg" alt="Deploy to Bluemix" width="300px"/></a>
+<a href="https://bluemix.net/deploy?repository=https://github.com/QzSG/bluemix-ghost-cloudinary"><img src="https://bluemix.net/deploy/button.svg" alt="Deploy to Bluemix" width="300px"/></a>
 
 ### Storage: Using [Cloudinary](http://cloudinary.com/) to store files
 
