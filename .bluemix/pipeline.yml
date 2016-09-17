@@ -12,8 +12,8 @@ stages:
     build_type: npm
     script: |-
       #!/bin/bash
+	  export PATH=/opt/IBM/node-v4.2/bin:$PATH
       npm install
-      npm run build
 - name: Deploy
   inputs:
   - type: job
@@ -25,7 +25,7 @@ stages:
   - name: Deploy
     type: deployer
     target:
-      url: https://api.ng.bluemix.net
+      url: ${CF_TARGET}
       organization: ${CF_ORGANIZATION}
       space: ${CF_SPACE}
       application: ${CF_APP}
