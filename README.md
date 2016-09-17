@@ -54,7 +54,10 @@ Install Node.js. (See [Supported Node.js versions](http://support.ghost.org/supp
 
 <a href="https://bluemix.net/deploy?repository=https://github.com/QuartzSG/bluemix-ghost-cloudinary"><img src="https://bluemix.net/deploy/button.svg" alt="Deploy to Bluemix" width="300px"/></a>
 
-# Helpful repositories that I used as references
+# Helpful references
+- [TryGhost/Ghost](https://github.com/TryGhost/Ghost)
+- [sethbrasile/ghost-cloudinary-store](https://github.com/sethbrasile/ghost-cloudinary-store)
+- [ibmjstart/bluemix-ghost-js](https://github.com/ibmjstart/bluemix-ghost-js)
 
 # Copyright & License
 
