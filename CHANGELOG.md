@@ -1,5 +1,17 @@
 # Change Log
 
+## [Unreleased](https://github.com/QzSG/bluemix-ghost-cloudinary/tree/HEAD)
+
+[Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.1.0...HEAD)
+
+**Closed issues:**
+
+- IBM DevOps Pipeline running tasks twice [\#1](https://github.com/QzSG/bluemix-ghost-cloudinary/issues/1)
+
+**Merged pull requests:**
+
+- Prevent `npm install & preinstall` from running twice [\#2](https://github.com/QzSG/bluemix-ghost-cloudinary/pull/2) ([QzSG](https://github.com/QzSG))
+
 ## [1.1.0](https://github.com/QzSG/bluemix-ghost-cloudinary/tree/1.1.0) (2016-09-18)
 [Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.0.0...1.1.0)
 
