@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/releases)
+[![GitHub release](https://img.shields.io/github/release/QzSG/bluemix-ghost-cloudinary.svg?style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/releases)
 [![Ghost Version](https://img.shields.io/badge/ghost-0.11.0-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
 [![Node Version](https://img.shields.io/badge/node-^4.2.4-brightgreen.svg?maxAge=2592000&style=flat-square)](https://nodejs.org/en/)
 [![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
