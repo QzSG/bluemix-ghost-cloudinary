@@ -1,7 +1,9 @@
-[![GitHub version](https://badge.fury.io/gh/QuartzSG%2Fbluemix-ghost-cloudinary.svg)](https://badge.fury.io/gh/QuartzSG%2Fbluemix-ghost-cloudinary)
-[![Ghost Version](https://img.shields.io/badge/ghost-0.11.0-brightgreen.svg?style=flat-square)](https://github.com/TryGhost/Ghost)
-[![Node Version](https://img.shields.io/badge/node-^4.2.4-brightgreen.svg?style=flat-square)](https://nodejs.org/en/)
-[![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
+[![GitHub release](https://img.shields.io/github/release/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/releases)
+[![Ghost Version](https://img.shields.io/badge/ghost-0.11.0-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
+[![Node Version](https://img.shields.io/badge/node-^4.2.4-brightgreen.svg?maxAge=2592000&style=flat-square)](https://nodejs.org/en/)
+[![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
+[![David dependencies checker](https://img.shields.io/david/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://david-dm.org/QzSG/bluemix-ghost-cloudinary)
+[![MIT license](https://img.shields.io/github/license/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/blob/master/LICENSE)
 
 <img src="https://cloud.githubusercontent.com/assets/120485/6622822/c4c639fe-c8e7-11e4-9e64-5bec06c8b4c3.png" alt="Ghost" />
 
@@ -28,7 +30,7 @@ Install Node.js (if you haven't done so)
 Clone :ghost:
 
 ```bash
-git clone git://github.com/quartzsg/bluemix-ghost-cloudinary.git ghost-blog
+git clone git://github.com/qzsg/bluemix-ghost-cloudinary.git ghost-blog
 cd ghost-blog
 ```
 
@@ -57,7 +59,7 @@ Install Node.js. (See [Supported Node.js versions](http://support.ghost.org/supp
 
 ![Ghost + BlueMix](http://i.imgur.com/vNrQ3PD.jpg?1)
 
-<a href="https://bluemix.net/deploy?repository=https://github.com/QuartzSG/bluemix-ghost-cloudinary"><img src="https://bluemix.net/deploy/button.svg" alt="Deploy to Bluemix" width="300px"/></a>
+<a href="https://bluemix.net/deploy?repository=https://github.com/QzSG/bluemix-ghost-cloudinary"><img src="https://bluemix.net/deploy/button.svg" alt="Deploy to Bluemix" width="300px"/></a>
 
 ### Storage: Using [Cloudinary](http://cloudinary.com/) to store files
 
@@ -75,4 +77,4 @@ Install Node.js. (See [Supported Node.js versions](http://support.ghost.org/supp
 
 # Copyright & License
 
-Copyright (c) QuartzSG - Released under the [MIT license](LICENSE).
+Copyright (c) QzSG - Released under the [MIT license](LICENSE).
