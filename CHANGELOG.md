@@ -1,5 +1,11 @@
 # Change Log
 
+[Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.2.1...HEAD)
+
+**Implemented enhancements:**
+
+- Add Contributing.md [\#6](https://github.com/QzSG/bluemix-ghost-cloudinary/issues/6)
+
 ## [1.2.1](https://github.com/QzSG/bluemix-ghost-cloudinary/tree/1.2.1) (2016-10-05)
 [Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.1.1...1.2.1)
 
