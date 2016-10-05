@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.2.1](https://github.com/QzSG/bluemix-ghost-cloudinary/tree/1.2.1) (2016-10-05)
+[Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.1.1...1.2.1)
+
+**Merged pull requests:**
+
+- Update Ghost to version 0.11.1 [\#8](https://github.com/QzSG/bluemix-ghost-cloudinary/pull/8) ([QzSG](https://github.com/QzSG))
+- Add Contributing.md [\#7](https://github.com/QzSG/bluemix-ghost-cloudinary/pull/7) ([QzSG](https://github.com/QzSG))
+- Updated changelog [\#5](https://github.com/QzSG/bluemix-ghost-cloudinary/pull/5) ([QzSG](https://github.com/QzSG))
+
 ## [1.1.1](https://github.com/QzSG/bluemix-ghost-cloudinary/tree/1.1.1) (2016-09-18)
 [Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.1.0...1.1.1)
 
