@@ -295,6 +295,10 @@ li li {
     margin: 0;
 }
 
+li > p:last-of-type {
+    margin-bottom: 0;
+}
+
 hr {
     display: block;
     height: 1px;
@@ -976,13 +980,13 @@ body.nav-opened .nav {
 /* Add subtle load-in animation for content on the home page */
 .home-template .page-title {
     -webkit-animation: fade-in-down 0.6s;
-    animation: fade-in-down 0.6s;
+    animation: fade-in-down 0.6s both;
     -webkit-animation-delay: 0.2s;
     animation-delay: 0.2s;
 }
 .home-template .page-description {
     -webkit-animation: fade-in-down 0.9s;
-    animation: fade-in-down 0.9s;
+    animation: fade-in-down 0.9s both;
     -webkit-animation-delay: 0.1s;
     animation-delay: 0.1s;
 }
@@ -1015,9 +1019,12 @@ body.nav-opened .nav {
     box-shadow: #FFF 0 0 0 5px;
 }
 
-body:not(.post-template) .post-title,
-body:not(.page-template) .post-title {
+body:not(.post-template) .post-title {
     font-size: 3.6rem;
+}
+
+body.page-template .post-title {
+    font-size: 5rem;
 }
 
 .post-title a {
@@ -1789,9 +1796,12 @@ body:not(.page-template) .post-title {
         font-size: 0.95em
     }
 
-    body:not(.post-template) .post-title,
-    body:not(.page-template) .post-title {
+    body:not(.post-template) .post-title {
         font-size: 3.2rem;
+    }
+
+    body.page-template .post-title {
+        font-size: 4.5rem;
     }
 
     hr {
@@ -2058,9 +2068,12 @@ body:not(.page-template) .post-title {
         font-size: 1.8rem;
     }
 
-    body:not(.post-template) .post-title,
-    body:not(.page-template) .post-title {
+    body:not(.post-template) .post-title {
         font-size: 2.5rem;
+    }
+
+    body.page-template .post-title {
+        font-size: 2.8rem;
     }
 
     .post-template .site-footer,
