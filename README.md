@@ -20,12 +20,8 @@ The project is maintained by a non-profit organisation called the **Ghost Founda
 Make sure you've installed Node.js - I recommend the latest **Node v4 LTS** release. For other supported versions [click here](http://support.ghost.org/supported-node-versions/). 
 
 Install Node.js (if you haven't done so) 
-```bash
-# Node v4.2+ LTS - recommended
-# Node v0.10.x and v0.12.x - supported
-#
-# Choose wisely
-```
+
+Ghost currently supports Node versions 0.12.x, 4.2+ and 6.9+ only.
 
 Clone :ghost:
 
