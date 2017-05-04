@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.2.8](https://github.com/QzSG/bluemix-ghost-cloudinary/tree/1.2.8) (2017-05-04)
+[Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.2.7...1.2.8)
+
 ## [1.2.7](https://github.com/QzSG/bluemix-ghost-cloudinary/tree/1.2.7) (2017-03-22)
 [Full Changelog](https://github.com/QzSG/bluemix-ghost-cloudinary/compare/1.2.3...1.2.7)
 
