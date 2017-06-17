@@ -1,5 +1,5 @@
 [![GitHub release](https://img.shields.io/github/release/QzSG/bluemix-ghost-cloudinary.svg?style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/releases)
-[![Ghost Version](https://img.shields.io/badge/ghost-0.11.8-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
+[![Ghost Version](https://img.shields.io/badge/ghost-0.11.10-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
 [![Node Version](https://img.shields.io/badge/node-^4.5-brightgreen.svg?maxAge=2592000&style=flat-square)](https://nodejs.org/en/)
 [![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
 [![David dependencies checker](https://img.shields.io/david/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://david-dm.org/QzSG/bluemix-ghost-cloudinary)
@@ -21,7 +21,7 @@ Make sure you've installed Node.js - I recommend the latest **Node v4 LTS** rele
 
 Install Node.js (if you haven't done so) 
 
-Ghost currently supports Node versions 0.12.x, 4.2+ and 6.9+ only.
+Ghost currently supports Node versions 4.5+ and 6.9+ only.
 
 Clone :ghost:
 
