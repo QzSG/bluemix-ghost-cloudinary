@@ -1,7 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/QzSG/bluemix-ghost-cloudinary.svg?style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/releases)
-[![Ghost Version](https://img.shields.io/badge/ghost-0.11.10-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
-[![Node Version](https://img.shields.io/badge/node-^4.5-brightgreen.svg?maxAge=2592000&style=flat-square)](https://nodejs.org/en/)
-[![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
+[![Ghost Version](https://img.shields.io/badge/ghost-0.11.11-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
+[![Node Version](https://img.shields.io/badge/node-^6.11.3-brightgreen.svg?maxAge=2592000&style=flat-square)](https://nodejs.org/en/)
+[![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/0.11.11.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
 [![David dependencies checker](https://img.shields.io/david/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://david-dm.org/QzSG/bluemix-ghost-cloudinary)
 [![MIT license](https://img.shields.io/github/license/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/blob/master/LICENSE)
 
@@ -17,7 +17,7 @@ The project is maintained by a non-profit organisation called the **Ghost Founda
 
 # Quick Start Install
 
-Make sure you've installed Node.js - I recommend the latest **Node v4 LTS** release. For other supported versions [click here](http://support.ghost.org/supported-node-versions/). 
+Make sure you've installed Node.js - I recommend the latest **Node v6 LTS** release. For other supported versions [click here](http://support.ghost.org/supported-node-versions/). 
 
 Install Node.js (if you haven't done so) 
 
