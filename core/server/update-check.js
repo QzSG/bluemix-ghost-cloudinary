@@ -23,8 +23,10 @@
 var crypto   = require('crypto'),
     exec     = require('child_process').exec,
     https    = require('https'),
+    http     = require('http'),
+    uuid     = require('uuid'),
     moment   = require('moment'),
-    semver   = require('semver'),
+    querystring = require('querystring'),
     Promise  = require('bluebird'),
     _        = require('lodash'),
     url      = require('url'),
@@ -35,19 +37,25 @@ var crypto   = require('crypto'),
     i18n     = require('./i18n'),
     internal = {context: {internal: true}},
     allowedCheckEnvironments = ['development', 'production'],
-    checkEndpoint = 'updates.ghost.org',
     currentVersion = config.ghostVersion;
 
+function nextCheckTimestamp() {
+    var now = Math.round(new Date().getTime() / 1000);
+    return now + (24 * 3600);
+}
+
 function updateCheckError(error) {
-    api.settings.edit(
-        {settings: [{key: 'nextUpdateCheck', value: Math.round(Date.now() / 1000 + 24 * 3600)}]},
-        internal
-    );
+    api.settings.edit({
+        settings: [{
+            key: 'nextUpdateCheck',
+            value: nextCheckTimestamp()
+        }]
+    }, internal);
 
     errors.logError(
         error,
         i18n.t('errors.update-check.checkingForUpdatesFailed.error'),
-        i18n.t('errors.update-check.checkingForUpdatesFailed.help', {url: 'http://docs.ghost.org/v0.11.9'})
+        i18n.t('errors.update-check.checkingForUpdatesFailed.help', {url: 'http://docs.ghost.org/v0.11'})
     );
 }
 
@@ -57,29 +65,22 @@ function updateCheckError(error) {
  * @return {*|Promise}
  */
 function createCustomNotification(message) {
-    if (!semver.satisfies(currentVersion, message.version)) {
+    if (!message || !message.content) {
         return Promise.resolve();
     }
 
     var notification = {
-        status: 'alert',
-        type: 'info',
+        status: message.status || 'alert',
+        type: message.type || 'info',
         custom: true,
-        uuid: message.id,
-        dismissible: true,
+        id: message.id || uuid.v1(),
+        dismissible: message.hasOwnProperty('dismissible') ? message.dismissible : true,
+        // NOTE: not used in LTS
+        top: true,
         message: message.content
-    },
-    getAllNotifications = api.notifications.browse({context: {internal: true}}),
-    getSeenNotifications = api.settings.read(_.extend({key: 'seenNotifications'}, internal));
+    };
 
-    return Promise.join(getAllNotifications, getSeenNotifications, function joined(all, seen) {
-        var isSeen      = _.includes(JSON.parse(seen.settings[0].value || []), notification.uuid),
-            isDuplicate = _.some(all.notifications, {message: notification.message});
-
-        if (!isSeen && !isDuplicate) {
-            return api.notifications.add({notifications: [notification]}, {context: {internal: true}});
-        }
-    });
+    return api.notifications.add({notifications: [notification]}, {context: {internal: true}});
 }
 
 function updateCheckData() {
@@ -131,33 +132,64 @@ function updateCheckData() {
     }).catch(updateCheckError);
 }
 
+/**
+ * With the privacy setting `useUpdateCheck` you can control if you want to expose data from your blog to the
+ * Update Check Service. Enabled or disabled, you will receive the latest notification available from the service.
+ */
 function updateCheckRequest() {
     return updateCheckData().then(function then(reqData) {
         var resData = '',
-            headers,
-            req;
-
-        reqData = JSON.stringify(reqData);
-
-        headers = {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(reqData)
-        };
+            req,
+            requestHandler,
+            reqObj,
+            checkEndpoint = config.updateCheckUrl || 'https://updates.ghost.org',
+            checkMethod = config.isPrivacyDisabled('useUpdateCheck') ? 'GET' : 'POST',
+            headers = {
+                'Content-Type': 'application/json'
+            };
 
         return new Promise(function p(resolve, reject) {
-            req = https.request({
-                hostname: checkEndpoint,
-                method: 'POST',
+            requestHandler = checkEndpoint.indexOf('https') === 0 ? https : http;
+            checkEndpoint = url.parse(checkEndpoint);
+
+            reqObj = {
+                hostname: checkEndpoint.hostname,
+                port: checkEndpoint.port,
+                method: checkMethod,
                 headers: headers
-            }, function handler(res) {
+            };
+
+            if (checkMethod === 'POST') {
+                reqData = JSON.stringify(reqData);
+                headers['Content-Length'] = Buffer.byteLength(reqData);
+            } else {
+                reqObj.path = '/?' + querystring.stringify({
+                    ghost_version: reqData.ghost_version
+                });
+            }
+
+            req = requestHandler.request(reqObj, function handler(res) {
                 res.on('error', function onError(error) { reject(error); });
                 res.on('data', function onData(chunk) { resData += chunk; });
                 res.on('end', function onEnd() {
                     try {
                         resData = JSON.parse(resData);
+
+                        if (res.statusCode !== 200 && res.statusCode !== 201) {
+                            // CASE: no notifications available, ignore
+                            if (res.statusCode === 404) {
+                                return resolve({
+                                    next_check: nextCheckTimestamp(),
+                                    notifications: []
+                                });
+                            }
+
+                            return reject(new errors.BadRequestError(res.statusCode + ':' + JSON.stringify(resData)));
+                        }
+
                         resolve(resData);
                     } catch (e) {
-                        reject(i18n.t('errors.update-check.unableToDecodeUpdateResponse.error'));
+                        reject(new errors.BadRequestError(i18n.t('errors.update-check.unableToDecodeUpdateResponse.error') + ':' + resData));
                     }
                 });
             });
@@ -174,7 +206,10 @@ function updateCheckRequest() {
                 reject(error);
             });
 
-            req.write(reqData);
+            if (checkMethod === 'POST') {
+                req.write(reqData);
+            }
+
             req.end();
         });
     });
@@ -184,72 +219,83 @@ function updateCheckRequest() {
  * Handles the response from the update check
  * Does three things with the information received:
  * 1. Updates the time we can next make a check
- * 2. Checks if the version in the response is new, and updates the notification setting
- * 3. Create custom notifications is response from UpdateCheck as "messages" array which has the following structure:
+ * 2. Create custom notifications is response from UpdateCheck as "messages" array which has the following structure:
  *
  * "messages": [{
  *   "id": ed9dc38c-73e5-4d72-a741-22b11f6e151a,
  *   "version": "0.5.x",
- *   "content": "<p>Hey there! 0.6 is available, visit <a href=\"https://ghost.org/download\">Ghost.org</a> to grab your copy now<!/p>"
+ *   "content": "<p>Hey there! 0.6 is available, visit <a href=\"https://ghost.org/download\">Ghost.org</a> to grab your copy now<!/p>",
+ *   "dismissible": true | false,
+ *   "top": true | false
  * ]}
+ *
+ * Example for grouped custom notifications in config:
+ *
+ * notificationGroups: ['migration', 'something']
+ *
+ * 'all' is a reserved name for general custom notifications.
  *
  * @param {Object} response
  * @return {Promise}
  */
 function updateCheckResponse(response) {
-    return Promise.all([
-        api.settings.edit({settings: [{key: 'nextUpdateCheck', value: response.next_check}]}, internal),
-        api.settings.edit({settings: [{key: 'displayUpdateNotification', value: response.version}]}, internal)
-    ]).then(function () {
-        var messages = response.messages || [];
-        return Promise.map(messages, createCustomNotification);
-    });
+    var notifications = [],
+        notificationGroups = (config.notificationGroups || []).concat(['all']);
+
+    return api.settings.edit({settings: [{key: 'nextUpdateCheck', value: response.next_check}]}, internal)
+        .then(function () {
+            // CASE: Update Check Service returns multiple notifications.
+            if (_.isArray(response)) {
+                notifications = response;
+            } else if ((response.hasOwnProperty('notifications') && _.isArray(response.notifications))) {
+                notifications = response.notifications;
+            } else {
+                notifications = [response];
+            }
+
+            // CASE: Hook into received notifications and decide whether you are allowed to receive custom group messages.
+            if (notificationGroups.length) {
+                notifications = notifications.filter(function (notification) {
+                    if (!notification.custom) {
+                        return true;
+                    }
+
+                    return _.includes(notificationGroups.map(function (groupIdentifier) {
+                        if (notification.version.match(new RegExp(groupIdentifier))) {
+                            return true;
+                        }
+
+                        return false;
+                    }), true) === true;
+                });
+            }
+
+            return Promise.each(notifications, function (notification) {
+                return Promise.map(notification.messages || [], createCustomNotification);
+            });
+        });
 }
 
 function updateCheck() {
-    // The check will not happen if:
-    // 1. updateCheck is defined as false in config.js
-    // 2. we've already done a check this session
-    // 3. we're not in production or development mode
-    // TODO: need to remove config.updateCheck in favor of config.privacy.updateCheck in future version (it is now deprecated)
-    if (config.updateCheck === false || config.isPrivacyDisabled('useUpdateCheck') || _.indexOf(allowedCheckEnvironments, process.env.NODE_ENV) === -1) {
-        // No update check
+    // CASE: The check will not happen if your NODE_ENV is not in the allowed defined environments.
+    if (_.indexOf(allowedCheckEnvironments, process.env.NODE_ENV) === -1) {
         return Promise.resolve();
-    } else {
-        return api.settings.read(_.extend({key: 'nextUpdateCheck'}, internal)).then(function then(result) {
+    }
+
+    return api.settings.read(_.extend({key: 'nextUpdateCheck'}, internal))
+        .then(function then(result) {
             var nextUpdateCheck = result.settings[0];
 
+            // CASE: Next update check should happen now?
             if (nextUpdateCheck && nextUpdateCheck.value && nextUpdateCheck.value > moment().unix()) {
-                // It's not time to check yet
-                return;
-            } else {
-                // We need to do a check
-                return updateCheckRequest()
-                    .then(updateCheckResponse)
-                    .catch(updateCheckError);
+                return Promise.resolve();
             }
-        }).catch(updateCheckError);
-    }
-}
 
-function showUpdateNotification() {
-    return api.settings.read(_.extend({key: 'displayUpdateNotification'}, internal)).then(function then(response) {
-        var display = response.settings[0];
-
-        // Version 0.4 used boolean to indicate the need for an update. This special case is
-        // translated to the version string.
-        // TODO: remove in future version.
-        if (display.value === 'false' || display.value === 'true' || display.value === '1' || display.value === '0') {
-            display.value = '0.4.0';
-        }
-
-        if (display && display.value && currentVersion && semver.gt(display.value, currentVersion)) {
-            return display.value;
-        }
-
-        return false;
-    });
+            return updateCheckRequest()
+                .then(updateCheckResponse)
+                .catch(updateCheckError);
+        })
+        .catch(updateCheckError);
 }
 
 module.exports = updateCheck;
-module.exports.showUpdateNotification = showUpdateNotification;
