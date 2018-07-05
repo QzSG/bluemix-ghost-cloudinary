@@ -1,5 +1,5 @@
 [![GitHub release](https://img.shields.io/github/release/QzSG/bluemix-ghost-cloudinary.svg?style=flat-square)](https://github.com/QzSG/bluemix-ghost-cloudinary/releases)
-[![Ghost Version](https://img.shields.io/badge/ghost-0.11.11-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
+[![Ghost Version](https://img.shields.io/badge/ghost-0.11.12-brightgreen.svg?maxAge=2592000&style=flat-square)](https://github.com/TryGhost/Ghost)
 [![Node Version](https://img.shields.io/badge/node-^6.11.3-brightgreen.svg?maxAge=2592000&style=flat-square)](https://nodejs.org/en/)
 [![Travis for Ghost](https://img.shields.io/travis/TryGhost/Ghost/0.11.11.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/TryGhost/Ghost)
 [![David dependencies checker](https://img.shields.io/david/QzSG/bluemix-ghost-cloudinary.svg?maxAge=2592000&style=flat-square)](https://david-dm.org/QzSG/bluemix-ghost-cloudinary)
@@ -14,6 +14,10 @@
 The project is maintained by a non-profit organisation called the **Ghost Foundation**, along with an amazing group of independent [contributors](https://github.com/TryGhost/Ghost/contributors). We're trying to make publishing software that changes the shape of online journalism.
 
 - [Visit Ghost.org for more details](https://ghost.org)
+
+# Important Note
+
+This repo is no longer mantained. I highly recommend switching over to Ghost v1+ onwards. Bluemix now IBM Cloud has always been a mess to work with, I have since moved over to Digital Ocean and self hosting Ghost v1.
 
 # Quick Start Install
 
