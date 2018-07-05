@@ -17,7 +17,7 @@ The project is maintained by a non-profit organisation called the **Ghost Founda
 
 # Important Note
 
-This repo is no longer mantained. I highly recommend switching over to Ghost v1+ onwards. Bluemix now IBM Cloud has always been a mess to work with, I have since moved over to Digital Ocean and self hosting Ghost v1.
+This repo is no longer maintained. I highly recommend switching over to Ghost v1+ onwards. Bluemix now IBM Cloud has always been a mess to work with, I have since moved over to Digital Ocean and self hosting Ghost v1.
 
 # Quick Start Install
 
